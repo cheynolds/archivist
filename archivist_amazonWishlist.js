@@ -37,11 +37,25 @@ for (var i = 0; i < c.length; i++) {
 
   try {
     book["itemAddedDate"] = c[i]
-      .querySelector("#itemAddedDate_" + id)
-      .innerHTML.match(/\<\/span\>(.+)/)[1];
+      .querySelector("#itemAddedDate_" + id).innerText
+    
+	 // .innerHTML.match(/\<\/span\>(.+)/)[1];
   } catch (err) {
     book["itemAddedDate"] = "";
   }
+
+  try {
+    book["itemPurchasedDate"] = c[i]
+      .querySelector("#itemPurchasedDate_" + id).innerText
+    
+	 // .innerHTML.match(/\<\/span\>(.+)/)[1];
+  } catch (err) {
+    book["itemPurchasedDate"] = "";
+  }
+
+
+
+
 
   try {
     book["asin"] = JSON.parse(
@@ -74,6 +88,10 @@ var head_dateAdded = document.createElement("th");
 head_dateAdded.innerText = "Date Added";
 head.appendChild(head_dateAdded);
 
+var head_datePurchased = document.createElement("th");
+head_datePurchased.innerText = "Date Purchased";
+head.appendChild(head_datePurchased);
+
 var head_image = document.createElement("th");
 head_image.innerText = "Image";
 head.appendChild(head_image);
@@ -102,6 +120,7 @@ head.appendChild(head_link);
 for (var i = 0; i < books.length; i++) {
   let tr = document.createElement("tr");
   tr.appendChild(maketd(books[i].itemAddedDate));
+  tr.appendChild(maketd(books[i].itemPurchasedDate));
   tr.appendChild(maketd(`<img src=${books[i].image}>`));
   tr.appendChild(maketd(books[i].title));
   tr.appendChild(
