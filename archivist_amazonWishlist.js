@@ -84,24 +84,20 @@ table.style.margin="10px";
 var head = document.createElement("tr");
 table.appendChild(head);
 
-var head_dateAdded = document.createElement("th");
-head_dateAdded.innerText = "Date Added";
-head.appendChild(head_dateAdded);
+var head_title = document.createElement("th");
+head_title.innerText = "Title";
+head.appendChild(head_title);
 
-var head_datePurchased = document.createElement("th");
-head_datePurchased.innerText = "Date Purchased";
-head.appendChild(head_datePurchased);
+
 
 var head_image = document.createElement("th");
 head_image.innerText = "Image";
 head.appendChild(head_image);
 
-var head_title = document.createElement("th");
-head_title.innerText = "Title";
-head.appendChild(head_title);
+
 
 var head_author = document.createElement("th");
-head_author.innerText = "Author";
+head_author.innerText = "Brand";
 head.appendChild(head_author);
 
 var head_asin = document.createElement("th");
@@ -111,6 +107,15 @@ head.appendChild(head_asin);
 var head_price = document.createElement("th");
 head_price.innerText = "Price";
 head.appendChild(head_price);
+
+
+var head_dateAdded = document.createElement("th");
+head_dateAdded.innerText = "Date Added";
+head.appendChild(head_dateAdded);
+
+var head_datePurchased = document.createElement("th");
+head_datePurchased.innerText = "Date Purchased";
+head.appendChild(head_datePurchased);
 
 var head_link = document.createElement("th");
 head_link.innerText = "Link";
@@ -122,9 +127,7 @@ for (var i = 0; i < books.length; i++) {
 
   tr.appendChild(maketd(books[i].title));
   tr.appendChild(maketd(`<img src=${books[i].image}>`));
-  tr.appendChild(
-    maketd(books[i].author.replace("by ", "").replace(/\(.+?\)/, ""))
-  );
+  tr.appendChild(maketd(books[i].author.replace("by ", "").replace(/\(.+?\)/, "")));
   tr.appendChild(maketd(books[i].asin));
   tr.appendChild(maketd(books[i].price));
   tr.appendChild(maketd(books[i].itemAddedDate));
