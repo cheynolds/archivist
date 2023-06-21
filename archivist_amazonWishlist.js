@@ -119,15 +119,16 @@ head.appendChild(head_link);
 
 for (var i = 0; i < books.length; i++) {
   let tr = document.createElement("tr");
-  tr.appendChild(maketd(books[i].itemAddedDate));
-  tr.appendChild(maketd(books[i].itemPurchasedDate));
-  tr.appendChild(maketd(`<img src=${books[i].image}>`));
+
   tr.appendChild(maketd(books[i].title));
+  tr.appendChild(maketd(`<img src=${books[i].image}>`));
   tr.appendChild(
     maketd(books[i].author.replace("by ", "").replace(/\(.+?\)/, ""))
   );
   tr.appendChild(maketd(books[i].asin));
   tr.appendChild(maketd(books[i].price));
+  tr.appendChild(maketd(books[i].itemAddedDate));
+  tr.appendChild(maketd(books[i].itemPurchasedDate));
   tr.appendChild(maketd(`<a href='${books[i].link}'>Product Link</a>`));
   table.appendChild(tr);
 }
