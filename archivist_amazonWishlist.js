@@ -1,4 +1,5 @@
-// Capture wishlist items
+javascript: (() => {
+
 var c = document.querySelectorAll(".g-item-sortable");
 var books = [];
 for (var i = 0; i < c.length; i++) {
@@ -39,7 +40,7 @@ for (var i = 0; i < c.length; i++) {
     book["itemAddedDate"] = c[i]
       .querySelector("#itemAddedDate_" + id).innerText
     
-	 // .innerHTML.match(/\<\/span\>(.+)/)[1];
+
   } catch (err) {
     book["itemAddedDate"] = "";
   }
@@ -48,7 +49,7 @@ for (var i = 0; i < c.length; i++) {
     book["itemPurchasedDate"] = c[i]
       .querySelector("#itemPurchasedDate_" + id).innerText
     
-	 // .innerHTML.match(/\<\/span\>(.+)/)[1];
+
   } catch (err) {
     book["itemPurchasedDate"] = "";
   }
@@ -67,11 +68,11 @@ for (var i = 0; i < c.length; i++) {
   books.push(book);
 }
 
-// Clear site
+
 document.body.innerText = "";
 
 
-// Build table w/ wishilist items 
+
 function maketd(val) {
   var td = document.createElement("td");
   td.innerHTML = val.trim();
@@ -125,15 +126,18 @@ head.appendChild(head_link);
 for (var i = 0; i < books.length; i++) {
   let tr = document.createElement("tr");
 
-  tr.appendChild(maketd(books[i].title));
-  tr.appendChild(maketd(`<img src=${books[i].image}>`));
-  tr.appendChild(maketd(books[i].author.replace("by ", "").replace(/\(.+?\)/, "")));
-  tr.appendChild(maketd(books[i].asin));
-  tr.appendChild(maketd(books[i].price));
-  tr.appendChild(maketd(books[i].itemAddedDate));
-  tr.appendChild(maketd(books[i].itemPurchasedDate));
-  tr.appendChild(maketd(`<a href='${books[i].link}'>Product Link</a>`));
+  tr.appendChild(maketd("## " + books[i].title));
+  tr.appendChild(maketd(`<img src=${books[i].image} width="250">`));
+  tr.appendChild(maketd("brand:: " +books[i].author.replace("by ", "").replace(/\(.+?\)/, "")));
+  tr.appendChild(maketd("ASIN:: " +books[i].asin));
+  tr.appendChild(maketd("price:: "+books[i].price));
+  tr.appendChild(maketd("item added ::  " +books[i].itemAddedDate));
+  tr.appendChild(maketd("item purchased ::" +books[i].itemPurchasedDate));
+  tr.appendChild(maketd("source :: "+ `<a href='${books[i].link}'>Product Link</a>`));
   table.appendChild(tr);
 }
 
 document.body.appendChild(table);
+
+})();
+
